@@ -1,0 +1,5 @@
+name: 'HTTP Status Dogs'
+core: 8.x
+type: module
+package: wat
+description: "Replaces Drupal's HTTP exception handling with pictures of dogs."

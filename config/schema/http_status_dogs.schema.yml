@@ -1,0 +1,10 @@
+http_status_dogs.settings:
+  type: config_object
+  label: 'HTTP Status Dogs settings'
+  mapping:
+    images_dir:
+      type: string
+      label: 'URI of image library'
+    wat:
+      type: boolean
+      label: 'Status of wat mode'

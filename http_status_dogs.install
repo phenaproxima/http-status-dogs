@@ -1,0 +1,19 @@
+<?php
+
+use Drupal\http_status_dogs\DefaultExceptionHtmlSubscriber;
+
+/**
+ * Implements hook_install().
+ */
+function http_status_dogs_install() {
+  $images = file_scan_directory(__DIR__ . '/images', DefaultExceptionHtmlSubscriber::getMask());
+
+  $dir = \Drupal::config('http_status_dogs.settings')->get('images_dir');
+  $ready = file_prepare_directory($dir, FILE_CREATE_DIRECTORY | FILE_MODIFY_PERMISSIONS);
+  if ($ready) {
+    foreach ($images as $image) {
+      $destination = rtrim($dir, '/') . '/' . $image->filename;
+      file_unmanaged_copy($image->uri, $destination, FILE_EXISTS_ERROR);
+    }
+  }
+}
